@@ -6,7 +6,7 @@
 #    By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/07 21:10:53 by yabukirento       #+#    #+#              #
-#    Updated: 2025/03/08 19:18:31 by yabukirento      ###   ########.fr        #
+#    Updated: 2025/03/09 10:13:27 by yabukirento      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,16 +17,14 @@ SRCS =	./srcs/required_functions/push.c \
 		./srcs/main.c \
 		./srcs/error.c \
 		./srcs/init_node_a.c \
+		./srcs/init_node_b.c \
 		./srcs/stack_utils.c \
 		./srcs/sort_small.c \
 		./srcs/sort_large.c \
-		./srcs/fill_stack.c \
+		./srcs/fill_stack_a.c \
 		./srcs/set_median.c \
-		# ./srcs/free.c \
-		# ./srcs/additonal_rr.c \
-		# ./srcs/ft_is_sorted.c \
-		# ./srcs/find_minmax.c \
-		# ./srcs/recursion_stop.c \
+		./srcs/prep_for_push.c \
+		./srcs/additional_functions.c \
 
 OBJS = $(SRCS:.c=.o)
 

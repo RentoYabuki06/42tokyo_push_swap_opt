@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:10:01 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 15:04:19 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/08 20:22:25 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,26 @@
 
 static void	ft_push(t_stack **from, t_stack **to)
 {
-	t_stack	*tmp;
+	t_stack	*node;
 
-	if (!(*from) || !(*to) || !((*from)->value) || !((*to)->value))
-	{
-		ft_printf("Stack is empty\n");
+	if (!*from)
 		return ;
+	node = *from;
+	*from = (*from)->next;
+	if (*from)
+		(*from)->next = NULL;
+	node->prev = NULL;
+	if (*to)
+	{
+		*to = node;
+		node->next = NULL;
 	}
-	tmp = ft_find_last(*from);
-	// continue
+	else
+	{
+		node->next = *to;
+		node->next->prev = node;
+		*to = node;
+	}
 }
 
 void	ft_pa(t_stack **stack_a, t_stack **stack_b)
@@ -35,16 +46,4 @@ void	ft_pb(t_stack **stack_a, t_stack **stack_b)
 {
 	ft_push(stack_a, stack_b);
 	write(1, "pb\n", 3);
-}
-
-int	ft_pa_int(t_stack **stack_a, t_stack **stack_b)
-{
-	ft_pa(stack_a, stack_b);
-	return (1);
-}
-
-int	ft_pb_int(t_stack **stack_a, t_stack **stack_b)
-{
-	ft_pb(stack_a, stack_b);
-	return (1);
 }

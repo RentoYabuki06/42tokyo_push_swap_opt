@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   fill_stack_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:13:59 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 14:39:59 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/08 21:02:34 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,41 @@ static void	ft_append_node(t_stack **stack, int num)
 	
 }
 
-static int	ft_isduplicated(t_stack *stack)
+static int	ft_isduplicated(t_stack *stack, int num)
 {
-	// numが
+	while (stack)
+	{
+		if (stack->value == num)
+			return (TRUE);
+		stack = stack->next;
+	}
+	return (FALSE);
 }
 
-static int	ft_error_syntax(char *num)
+static int	ft_error_syntax(char *s)
 {
-	// ifnumが適切でない場合は
-		return (EXIT_FAILURE);
-	return (EXIT_SUCCESS);
+	int	i;
+
+	i = 11;
+	while ((*s >= 9 && *s <= 13) || *s == ' ')
+		s++;
+	if (*s == '-' || *s == '+')
+		s++;
+	while (ft_isdigit(*s) && !*s)
+	{
+		i--;
+		if (i == 0)
+			return (TRUE);
+		s++;
+	}
+	while ((*s >= 9 && *s <= 13) || *s == ' ')
+		s++;
+	if (*s == '\0')
+		return (FALSE);
+	return (TRUE);
 }
 
-void	ft_init_stack_a(t_stack *stack, char **argv)
+void	ft_init_stack_a(t_stack **stack, char **argv)
 {
 	int		i;
 	long	num;
@@ -63,8 +85,8 @@ void	ft_init_stack_a(t_stack *stack, char **argv)
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
 			ft_free_error(stack);
-		if (ft_isduplicated(num))
+		if (ft_isduplicated(*stack, num))
 			ft_free_error(stack);
-		ft_append_node(&stack, (int)num);
+		ft_append_node(stack, (int)num);
 	}
 }

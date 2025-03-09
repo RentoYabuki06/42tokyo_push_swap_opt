@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:55:38 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 19:22:59 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 10:14:32 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static void	ft_set_target_b(t_stack *stack_a, t_stack *stack_b)
 
 void	ft_init_nodes_b(t_stack *stack_a, t_stack *stack_b)
 {
-	ft_current_index(stack_a);
-	ft_current_index(stack_b);
+	ft_set_median(stack_a);
+	ft_set_median(stack_b);
 	ft_set_target_b(stack_a, stack_b);
 }

@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 21:15:40 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 19:19:04 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/08 20:56:15 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	ft_sort_four(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_five(t_stack **stack_a, t_stack **stack_b);
 void	ft_sort_large(t_stack **stack_a, t_stack **stack_b);
 
-void	ft_init_stack_a(t_stack *stack, char **argv);
+void	ft_init_stack_a(t_stack **stack, char **argv);
 
 bool	ft_is_sorted(t_stack *stack);
 int		ft_stack_len(t_stack *stack);
@@ -58,6 +58,15 @@ t_stack	*ft_find_min(t_stack *stack);
 t_stack	*ft_find_max(t_stack *stack);
 
 void	ft_init_nodes_a(t_stack *stack_a, t_stack *stack_b);
+void	ft_init_nodes_b(t_stack *stack_a, t_stack *stack_b);
 void	ft_set_median(t_stack *stack);
+
+void	ft_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
+void	ft_rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
+
+void	ft_prep_for_push(t_stack **stack, t_stack *top_node, char stack_name);
+
+void	ft_free_error(t_stack **stack);
+void	ft_free_stack(t_stack **stack);
 
 #endif

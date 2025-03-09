@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   set_median.c                                       :+:      :+:    :+:   */
+/*   additional_functions.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/08 19:18:05 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 20:30:59 by yabukirento      ###   ########.fr       */
+/*   Created: 2025/03/08 20:31:17 by yabukirento       #+#    #+#             */
+/*   Updated: 2025/03/08 20:42:47 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_set_median(t_stack *stack)
+void	ft_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
 {
-	int	i;
-	int	median;
-
-	i = 0;
-	if (!stack)
-		return ;
-	median = ft_stack_len(stack) / 2;
-	while (stack)
-	{
-		stack->index = i;
-		if (i <= median)
-			stack->above_median = true;
-		else
-			stack->above_median = false;
-		stack = stack->next;
-		i++;
-	}
+	while (*b != cheapest_node->target_node && *a != cheapest_node)
+		ft_rr(a, b);
+	ft_set_median(*a);
+	ft_set_median(*b);
 }
 
+void	ft_rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node)
+{
+	while (*b != cheapest_node->target_node && *a != cheapest_node)
+		ft_rrr(a, b);
+	ft_set_median(*a);
+	ft_set_median(*b);
+}

@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:09:55 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 14:54:55 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/08 20:54:05 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	if (!ft_is_sorted(stack_a))
 	{
 		if (ft_stack_len(stack_a) == 2)
-			ft_sa(stack_a);
+			ft_sa(&stack_a);
 		else if(ft_stack_len(stack_a) == 3)
 			ft_sort_three(&stack_a);
 		else if(ft_stack_len(stack_a) == 4)
@@ -37,6 +37,6 @@ int	main(int argc, char **argv)
 		else 
 			ft_sort_large(&stack_a, &stack_b);
 	}
-	free_stack(stack_a);
+	ft_free_stack(&stack_a);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:10:08 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/07 21:10:09 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/08 20:51:03 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,16 @@
 
 static void	ft_reverse_rotate(t_stack **stack)
 {
-	t_node	*prev_top;
-	t_node	*prev_bottom;
-	t_node	*nex_bottom;
+	t_stack	*last_node;
 
-	if (!stack || !(*stack) || (*stack)->size < 2)
+	if (!*stack || !(*stack)->next)
 		return ;
-	prev_bottom = (*stack)->bottom;
-	prev_top = (*stack)->top;
-	nex_bottom = (*stack)->top;
-	while (nex_bottom->next != prev_bottom)
-		nex_bottom = nex_bottom->next;
-	nex_bottom->next = NULL;
-	prev_bottom->next = prev_top;
-	(*stack)->top = prev_bottom;
-	(*stack)->bottom = nex_bottom;
+	last_node = ft_find_last(*stack);
+	last_node->prev->next = NULL;
+	last_node->next = *stack;
+	last_node->prev = NULL;
+	*stack = last_node;
+	last_node->next->prev = last_node;
 }
 
 void	ft_rra(t_stack **stack_a)

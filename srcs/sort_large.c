@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:48:55 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 19:57:38 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/08 21:00:31 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static void	ft_min_on_top(t_stack **stack)
 {
 	t_stack *min_node;
 
-	min_node = ft_find_min(stack);
+	min_node = ft_find_min(*stack);
 	while ((*stack)->value != min_node->value)
 	{
 		if (min_node->above_median)
@@ -77,6 +77,6 @@ void	ft_sort_large(t_stack **stack_a, t_stack **stack_b)
 		ft_init_nodes_b(*stack_a, *stack_b);
 		ft_move_btoa(stack_a, stack_b);
 	}
-	ft_set_median(stack_a);
+	ft_set_median(*stack_a);
 	ft_min_on_top(stack_a);
 }
