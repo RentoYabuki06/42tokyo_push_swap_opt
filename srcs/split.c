@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 11:45:18 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 11:47:09 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 12:56:14 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static char	*ft_get_next_word(char *s, char c)
 	return (next_word);
 }
 
-char **ft_push_swap_split(char *s, char c)
+char	**ft_push_swap_split(char *s, char c)
 {
 	int		words_count;
 	char	**result_array;

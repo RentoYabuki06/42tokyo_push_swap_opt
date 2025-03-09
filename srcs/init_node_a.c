@@ -6,12 +6,11 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:18:47 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 12:45:50 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 12:57:30 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
 
 static void	ft_set_target_a(t_stack *stack_a, t_stack *stack_b)
 {
@@ -19,14 +18,14 @@ static void	ft_set_target_a(t_stack *stack_a, t_stack *stack_b)
 	t_stack	*target_node;
 	long	best_match_index;
 
-
-	while(stack_a)
+	while (stack_a)
 	{
 		best_match_index = LONG_MIN;
 		current_b = stack_b;
 		while (current_b)
 		{
-			if (current_b->value < stack_a->value && current_b->value > best_match_index)
+			if (current_b->value < stack_a->value \
+				&& current_b->value > best_match_index)
 			{
 				best_match_index = current_b->value;
 				target_node = current_b;
@@ -67,7 +66,7 @@ static void	ft_set_cheapest(t_stack *stack)
 	t_stack	*cheapest_node;
 
 	if (!stack)
-		return;
+		return ;
 	cheapest_value = LONG_MAX;
 	while (stack)
 	{

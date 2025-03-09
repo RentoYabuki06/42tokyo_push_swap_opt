@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:41:28 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 20:44:00 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 12:55:41 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	ft_prep_for_push(t_stack **stack, t_stack *top_node, char stack_name)
 		{
 			if (top_node->above_median)
 				ft_rb(stack);
-			else 
+			else
 				ft_rrb(stack);
 		}
 	}

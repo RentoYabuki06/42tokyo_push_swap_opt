@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:18:05 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 12:21:28 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 12:56:23 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,4 +32,3 @@ void	ft_set_median(t_stack *stack)
 		i++;
 	}
 }
-

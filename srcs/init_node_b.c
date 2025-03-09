@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:55:38 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 10:14:32 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 12:58:39 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ static void	ft_set_target_b(t_stack *stack_a, t_stack *stack_b)
 	t_stack	*target_node;
 	long	best_match_index;
 
-
-	while(stack_b)
+	while (stack_b)
 	{
 		best_match_index = LONG_MAX;
 		current_a = stack_a;
 		while (current_a)
 		{
-			if (current_a->value > stack_b->value && current_a->value < best_match_index)
+			if (current_a->value > stack_b->value \
+				&& current_a->value < best_match_index)
 			{
 				best_match_index = current_a->value;
 				target_node = current_a;

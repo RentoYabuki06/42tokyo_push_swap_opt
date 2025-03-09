@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:13:59 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 11:44:10 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 12:58:19 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,18 +26,15 @@ static void	ft_append_node(t_stack **stack, int num)
 	node->value = num;
 	if (!(*stack))
 	{
-		// ft_printf("first node\n");
 		*stack = node;
 		node->prev = NULL;
 	}
 	else
 	{
-		// ft_printf("additional node\n");
 		last_node = ft_find_last(*stack);
 		last_node->next = node;
 		node->prev = last_node;
 	}
-	
 }
 
 static int	ft_isduplicated(t_stack *stack, int num)
