@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:13:59 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 12:58:19 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 15:05:05 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,13 @@ static int	ft_isduplicated(t_stack *stack, int num)
 	return (FALSE);
 }
 
-static int	ft_error_syntax(char *s)
+static int	ft_error_syntax(char *s, t_stack **stack)
 {
 	int	i;
 
 	i = 11;
+	if (!*s)
+		ft_free_error(stack);
 	while ((*s >= 9 && *s <= 13) || *s == ' ')
 		s++;
 	if (*s == '-' || *s == '+')
@@ -79,7 +81,7 @@ void	ft_init_stack_a(t_stack **stack, char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		if (ft_error_syntax(argv[i]))
+		if (ft_error_syntax(argv[i], stack))
 			ft_free_error(stack);
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
