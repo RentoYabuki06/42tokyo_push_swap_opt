@@ -6,11 +6,27 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:09:55 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 20:54:05 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 11:41:37 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+//あとで消す
+static void	ft_print_stack(t_stack *stack)
+{
+	int i;
+
+	i = 0;
+	ft_printf("---- the top contents of this stack -----\n");
+	while (stack)
+	{
+		i++;
+		ft_printf("%d : %d\n", i, (stack)->value);
+		stack = (stack)->next;
+	}
+	ft_printf("---- the end contents of this stack -----\n");
+}
 
 int	main(int argc, char **argv)
 {
@@ -24,6 +40,7 @@ int	main(int argc, char **argv)
 	else if (argc == 2)
 		argv = ft_split(argv[1], ' ');
 	ft_init_stack_a(&stack_a, argv + 1);
+	ft_print_stack(stack_a);
 	if (!ft_is_sorted(stack_a))
 	{
 		if (ft_stack_len(stack_a) == 2)
@@ -37,6 +54,7 @@ int	main(int argc, char **argv)
 		else 
 			ft_sort_large(&stack_a, &stack_b);
 	}
+	ft_print_stack(stack_a);
 	ft_free_stack(&stack_a);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:50:43 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 20:59:09 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 11:16:51 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	ft_sort_three(t_stack **stack)
 
 void	ft_sort_four(t_stack **stack_a, t_stack **stack_b)
 {
-	int	min;
+	t_stack	*min_node;
 
-	min = ft_find_min(*stack_a)->value;
+	min_node = ft_find_min(*stack_a);
 	while ((*stack_a)->next)
 	{
-		if ((*stack_a)->value == min)
+		if (*stack_a == min_node)
 			ft_pb(stack_a, stack_b);
 		else
 			ft_ra(stack_a);
@@ -43,24 +43,26 @@ void	ft_sort_four(t_stack **stack_a, t_stack **stack_b)
 
 void	ft_sort_five(t_stack **stack_a, t_stack **stack_b)
 {
-	int	min;
-	int	max;
+	t_stack	*min_node;
+	t_stack	*max_node;
+	t_stack	**top_node;
 
-	min = ft_find_min(*stack_a)->value;
-	max = ft_find_max(*stack_a)->value;
+	min_node = ft_find_max(*stack_a);
+	max_node = ft_find_min(*stack_a);
+	top_node = stack_a;
 	while ((*stack_a)->next)
 	{
-		if ((*stack_a)->value == min || (*stack_a)->value == max)
+		if (*stack_a == min_node || *stack_a == max_node)
 			ft_pb(stack_a, stack_b);
 		else
 			ft_ra(stack_a);
-		stack_a++;
+		*stack_a = (*stack_a)->next;
 	}
 	ft_sort_three(stack_a);
 	ft_pa(stack_a, stack_b);
-	if (ft_find_last(*stack_a)->value == max)
+	if (*top_node == max_node)
 		ft_ra(stack_a);
 	ft_pa(stack_a, stack_b);
-	if (ft_find_last(*stack_a)->value == max)
+	if (*top_node == max_node)
 		ft_ra(stack_a);
 }

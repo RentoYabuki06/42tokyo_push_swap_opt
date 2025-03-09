@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:31:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 20:57:11 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 11:39:46 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_stack	*ft_find_last(t_stack *stack)
 {
 	if (!stack)
 		return (NULL);
-	while (stack)
+	while (stack->next)
 		stack = stack->next;
 	return (stack);
 }
