@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:48:55 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 21:00:31 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 12:47:01 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 static t_stack *ft_get_cheapest(t_stack *stack)
 {
+	if (!stack)
+		return (NULL);
 	while (stack)
 	{
 		if (stack->cheapest == true)
 			return (stack);
 		stack = stack->next;
 	}
-	return (stack);
+	return (NULL);
 }
 
 static void ft_move_atob(t_stack **stack_a, t_stack **stack_b)
@@ -62,21 +64,40 @@ void	ft_sort_large(t_stack **stack_a, t_stack **stack_b)
 	int	len;
 
 	len = ft_stack_len(*stack_a);
+	// ft_printf("<<< start sort large >>>\n");
 	if (len-- > 3 && !ft_is_sorted(*stack_a))
 		ft_pb(stack_a, stack_b);
 	if (len-- > 3 && !ft_is_sorted(*stack_a))
 		ft_pb(stack_a, stack_b);
+	// ft_printf("<<< stack a >>>\n");
+	// ft_print_stack(*stack_a);
+	// ft_printf("<<< stack b >>>\n");
+	// ft_print_stack(*stack_b);
+	// ft_printf("<<< move to b >>>\n");
 	while (len-- > 3 && !ft_is_sorted(*stack_a))
 	{
+		// ft_printf("%d times\n", len);
 		ft_init_nodes_a(*stack_a, *stack_b);
 		ft_move_atob(stack_a, stack_b);
 	}
+	// ft_printf("<<< stack a >>>\n");
+	// ft_print_stack(*stack_a);
+	// ft_printf("<<< stack b >>>\n");
+	// ft_print_stack(*stack_b);
 	ft_sort_three(stack_a);
+	// ft_printf("<<< stack a >>>\n");
+	// ft_print_stack(*stack_a);
+	// ft_printf("<<< stack b >>>\n");
+	// ft_print_stack(*stack_b);
+	// ft_printf("<<< move to a >>>\n");
 	while(*stack_b)
 	{
 		ft_init_nodes_b(*stack_a, *stack_b);
 		ft_move_btoa(stack_a, stack_b);
 	}
+	// ft_printf("<<< index reset >>>\n");
 	ft_set_median(*stack_a);
+	// ft_printf("<<< move min to top >>>\n");
 	ft_min_on_top(stack_a);
+	// ft_printf("<<< finish sort large >>>\n");
 }

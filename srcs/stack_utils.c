@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:31:45 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 11:39:46 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 11:54:49 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,15 @@ bool	ft_is_sorted(t_stack *stack)
 int	ft_stack_len(t_stack *stack)
 {
 	int		len;
-	t_stack	*node;
 
 	len = 1;
-	node = ft_find_last(stack);
-	while (node->next)
+	if (!stack->next)
+		return (len);
+	while (stack->next)
+	{
 		len++;
+		stack = stack->next;
+	}
 	return (len);
 }
 

@@ -6,7 +6,7 @@
 #    By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/07 21:10:53 by yabukirento       #+#    #+#              #
-#    Updated: 2025/03/09 10:13:27 by yabukirento      ###   ########.fr        #
+#    Updated: 2025/03/09 12:22:22 by yabukirento      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ SRCS =	./srcs/required_functions/push.c \
 		./srcs/required_functions/rotate.c \
 		./srcs/required_functions/swap.c \
 		./srcs/main.c \
+		./srcs/split.c \
 		./srcs/error.c \
+		./srcs/rotate_both.c \
 		./srcs/init_node_a.c \
 		./srcs/init_node_b.c \
 		./srcs/stack_utils.c \
@@ -24,7 +26,6 @@ SRCS =	./srcs/required_functions/push.c \
 		./srcs/fill_stack_a.c \
 		./srcs/set_median.c \
 		./srcs/prep_for_push.c \
-		./srcs/additional_functions.c \
 
 OBJS = $(SRCS:.c=.o)
 

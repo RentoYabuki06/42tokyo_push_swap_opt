@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:13:59 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 11:06:13 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 11:44:10 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,14 @@ void	ft_init_stack_a(t_stack **stack, char **argv)
 	i = 0;
 	while (argv[i])
 	{
-		// ft_printf("%s\n", argv[i]);
 		if (ft_error_syntax(argv[i]))
 			ft_free_error(stack);
-		// ft_printf("hello\n");
 		num = ft_atol(argv[i]);
-		// ft_printf("%d\n", num);
 		if (num > INT_MAX || num < INT_MIN)
 			ft_free_error(stack);
-		// ft_printf("world\n");
 		if (ft_isduplicated(*stack, num))
 			ft_free_error(stack);
-		// ft_printf("!!!!\n");
 		ft_append_node(stack, (int)num);
-		// ft_printf("!!!!\n");
 		i++;
 	}
 }

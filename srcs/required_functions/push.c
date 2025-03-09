@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:10:01 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/08 20:22:25 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/09 12:32:55 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ static void	ft_push(t_stack **from, t_stack **to)
 	node = *from;
 	*from = (*from)->next;
 	if (*from)
-		(*from)->next = NULL;
+		(*from)->prev = NULL;
 	node->prev = NULL;
-	if (*to)
+	if (!*to)
 	{
 		*to = node;
 		node->next = NULL;
