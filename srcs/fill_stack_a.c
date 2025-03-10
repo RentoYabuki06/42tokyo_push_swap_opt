@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:13:59 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 12:19:58 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/10 18:41:14 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ static int	ft_isduplicated(t_stack *stack, int num)
 	while (stack)
 	{
 		if (stack->value == num)
-			return (TRUE);
+			return (true);
 		stack = stack->next;
 	}
-	return (FALSE);
+	return (false);
 }
 
 static int	ft_error_syntax(char *s)
@@ -58,19 +58,19 @@ static int	ft_error_syntax(char *s)
 	if (*s == '-' || *s == '+')
 		s++;
 	if (!ft_isdigit(*s))
-		return (TRUE);
+		return (true);
 	while (ft_isdigit(*s))
 	{
 		i--;
 		if (i == 0)
-			return (TRUE);
+			return (true);
 		s++;
 	}
 	while ((*s >= 9 && *s <= 13) || *s == ' ')
 		s++;
 	if (*s)
-		return (TRUE);
-	return (FALSE);
+		return (true);
+	return (false);
 }
 
 void	ft_init_stack_a(t_stack **stack, char **argv)
