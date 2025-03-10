@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cost_cal.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
+/*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:23:58 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 15:24:26 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/10 15:32:12 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	ft_calculate_position_cost(int index, bool above_median, int stack_len)
+static int	ft_cal_cost(int index, bool above_median, int stack_len)
 {
 	if (above_median)
 		return (index);
@@ -32,23 +32,20 @@ static int	ft_get_total_cost(int cost_a, int cost_b, bool same_rotation)
 
 void	ft_cost_cal(t_stack *stack_a, t_stack *stack_b)
 {
-	int	len_a;
-	int	len_b;
-	int	cost_a;
-	int	cost_b;
+	int		cost_a;
+	int		cost_b;
 	bool	same_rotation;
+	t_stack	*target;
 
-	len_a = ft_stack_len(stack_a);
-	len_b = ft_stack_len(stack_b);
+	target = stack_a->target_node;
 	while (stack_a)
 	{
-		cost_a = ft_calculate_position_cost(stack_a->index, \
-			stack_a->above_median, len_a);
-		cost_b = ft_calculate_position_cost(stack_a->target_node->index, \
-			stack_a->target_node->above_median, len_b);
-		same_rotation = (stack_a->above_median && \
-			stack_a->target_node->above_median) || \
-			(!stack_a->above_median && !stack_a->target_node->above_median);
+		cost_a = ft_cal_cost(stack_a->index, \
+			stack_a->above_median, ft_stack_len(stack_a));
+		cost_b = ft_cal_cost(target->index, \
+			target->above_median, ft_stack_len(stack_b));
+		same_rotation = (stack_a->above_median && target->above_median) || \
+			(!stack_a->above_median && !target->above_median);
 		stack_a->push_cost = ft_get_total_cost(cost_a, cost_b, same_rotation);
 		stack_a = stack_a->next;
 	}
