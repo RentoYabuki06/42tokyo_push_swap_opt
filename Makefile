@@ -6,7 +6,7 @@
 #    By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/03/07 21:10:53 by yabukirento       #+#    #+#              #
-#    Updated: 2025/03/09 16:13:55 by yabukirento      ###   ########.fr        #
+#    Updated: 2025/03/10 17:36:26 by yabukirento      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRCS =	./srcs/required_functions/push.c \
 		./srcs/fill_stack_a.c \
 		./srcs/set_median.c \
 		./srcs/prep_for_push.c \
+		./srcs/cost_cal.c \
 
 OBJS = $(SRCS:.c=.o)
 
