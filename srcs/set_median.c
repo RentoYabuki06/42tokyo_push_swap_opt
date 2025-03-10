@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:18:05 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 12:56:23 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/10 18:06:17 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,24 @@ void	ft_set_median(t_stack *stack)
 		stack = stack->next;
 		i++;
 	}
+}
+
+void	ft_set_cheapest(t_stack *stack)
+{
+	long	cheapest_value;
+	t_stack	*cheapest_node;
+
+	if (!stack)
+		return ;
+	cheapest_value = LONG_MAX;
+	while (stack)
+	{
+		if (stack->push_cost < cheapest_value)
+		{
+			cheapest_value = stack->push_cost;
+			cheapest_node = stack;
+		}
+		stack = stack->next;
+	}
+	cheapest_node->cheapest = true;
 }

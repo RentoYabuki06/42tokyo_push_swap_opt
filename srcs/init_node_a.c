@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:18:47 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 15:12:40 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/10 18:07:02 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	ft_set_target_a(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-static int	ft_calculate_position_cost(int index, bool above_median, int stack_len)
+static int	ft_position_cost(int index, bool above_median, int stack_len)
 {
 	if (above_median)
 		return (index);
@@ -60,19 +60,19 @@ static int	ft_get_total_cost(int cost_a, int cost_b, bool same_rotation)
 
 static void	ft_cost_cal(t_stack *stack_a, t_stack *stack_b)
 {
-	int	len_a;
-	int	len_b;
-	int	cost_a;
-	int	cost_b;
+	int		len_a;
+	int		len_b;
+	int		cost_a;
+	int		cost_b;
 	bool	same_rotation;
 
 	len_a = ft_stack_len(stack_a);
 	len_b = ft_stack_len(stack_b);
 	while (stack_a)
 	{
-		cost_a = ft_calculate_position_cost(stack_a->index, \
+		cost_a = ft_position_cost(stack_a->index, \
 			stack_a->above_median, len_a);
-		cost_b = ft_calculate_position_cost(stack_a->target_node->index, \
+		cost_b = ft_position_cost(stack_a->target_node->index, \
 			stack_a->target_node->above_median, len_b);
 		same_rotation = (stack_a->above_median && \
 			stack_a->target_node->above_median) || \
@@ -80,26 +80,6 @@ static void	ft_cost_cal(t_stack *stack_a, t_stack *stack_b)
 		stack_a->push_cost = ft_get_total_cost(cost_a, cost_b, same_rotation);
 		stack_a = stack_a->next;
 	}
-}
-
-static void	ft_set_cheapest(t_stack *stack)
-{
-	long	cheapest_value;
-	t_stack	*cheapest_node;
-
-	if (!stack)
-		return ;
-	cheapest_value = LONG_MAX;
-	while (stack)
-	{
-		if (stack->push_cost < cheapest_value)
-		{
-			cheapest_value = stack->push_cost;
-			cheapest_node = stack;
-		}
-		stack = stack->next;
-	}
-	cheapest_node->cheapest = true;
 }
 
 void	ft_init_nodes_a(t_stack *stack_a, t_stack *stack_b)
