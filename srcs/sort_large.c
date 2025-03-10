@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:48:55 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 12:55:20 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/10 14:53:52 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,16 @@ void	ft_sort_large(t_stack **stack_a, t_stack **stack_b)
 	int	len;
 
 	len = ft_stack_len(*stack_a);
-	if (len-- > 3 && !ft_is_sorted(*stack_a))
+	if (len-- > 2 && !ft_is_sorted(*stack_a))
 		ft_pb(stack_a, stack_b);
-	if (len-- > 3 && !ft_is_sorted(*stack_a))
+	if (len-- > 2 && !ft_is_sorted(*stack_a))
 		ft_pb(stack_a, stack_b);
-	while (len-- > 3 && !ft_is_sorted(*stack_a))
+	while (len-- > 2 && !ft_is_sorted(*stack_a))
 	{
 		ft_init_nodes_a(*stack_a, *stack_b);
 		ft_move_atob(stack_a, stack_b);
 	}
-	ft_sort_three(stack_a);
+	// ft_sort_three(stack_a);
 	while (*stack_b)
 	{
 		ft_init_nodes_b(*stack_a, *stack_b);
