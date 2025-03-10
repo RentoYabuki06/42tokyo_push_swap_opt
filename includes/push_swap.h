@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 21:15:40 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/09 12:51:38 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/10 15:24:34 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,5 +70,6 @@ void	ft_free_error(t_stack **stack);
 void	ft_free_stack(t_stack **stack);
 
 char	**ft_push_swap_split(char *s, char c);
+void	ft_cost_cal(t_stack *stack_a, t_stack *stack_b);
 
 #endif
