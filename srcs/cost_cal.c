@@ -6,7 +6,7 @@
 /*   By: ryabuki <ryabuki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 15:23:58 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 15:32:12 by ryabuki          ###   ########.fr       */
+/*   Updated: 2025/03/10 17:09:56 by ryabuki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ void	ft_cost_cal(t_stack *stack_a, t_stack *stack_b)
 			stack_a->above_median, ft_stack_len(stack_a));
 		cost_b = ft_cal_cost(target->index, \
 			target->above_median, ft_stack_len(stack_b));
-		same_rotation = (stack_a->above_median && target->above_median) || \
-			(!stack_a->above_median && !target->above_median);
+		same_rotation = ((stack_a->above_median && target->above_median) || \
+			(!stack_a->above_median && !target->above_median));
 		stack_a->push_cost = ft_get_total_cost(cost_a, cost_b, same_rotation);
 		stack_a = stack_a->next;
 	}
