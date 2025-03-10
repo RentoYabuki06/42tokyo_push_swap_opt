@@ -6,22 +6,22 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:13:59 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 18:41:14 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/10 19:19:22 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	ft_append_node(t_stack **stack, int num)
+static bool	ft_append_node(t_stack **stack, int num)
 {
 	t_stack	*node;
 	t_stack	*last_node;
 
 	if (!stack)
-		ft_free_error(stack);
+		return (true);
 	node = (t_stack *)malloc(sizeof(t_stack));
 	if (!node)
-		ft_free_error(stack);
+		return (true);
 	node->next = NULL;
 	node->value = num;
 	if (!(*stack))
@@ -35,6 +35,7 @@ static void	ft_append_node(t_stack **stack, int num)
 		last_node->next = node;
 		node->prev = last_node;
 	}
+	return (false);
 }
 
 static int	ft_isduplicated(t_stack *stack, int num)
@@ -73,7 +74,7 @@ static int	ft_error_syntax(char *s)
 	return (false);
 }
 
-void	ft_init_stack_a(t_stack **stack, char **argv)
+bool	ft_init_stack_a(t_stack **stack, char **argv)
 {
 	int		i;
 	long	num;
@@ -82,13 +83,15 @@ void	ft_init_stack_a(t_stack **stack, char **argv)
 	while (argv[i])
 	{
 		if (ft_error_syntax(argv[i]))
-			ft_free_error(stack);
+			return (true);
 		num = ft_atol(argv[i]);
 		if (num > INT_MAX || num < INT_MIN)
-			ft_free_error(stack);
+			return (true);
 		if (ft_isduplicated(*stack, num))
-			ft_free_error(stack);
-		ft_append_node(stack, (int)num);
+			return (true);
+		if (ft_append_node(stack, (int)num))
+			return (true);
 		i++;
 	}
+	return (false);
 }
