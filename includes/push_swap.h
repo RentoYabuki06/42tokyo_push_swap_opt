@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 21:15:40 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 20:04:48 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/10 20:55:40 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	ft_rev_rotate_both(t_stack **a, t_stack **b, t_stack *cheapest_node);
 
 void	ft_prep_for_push(t_stack **stack, t_stack *top_node, char stack_name);
 
-void	ft_free_error(t_stack **stack, char **argv);
+void	ft_free_error(t_stack **stack, char **argv, bool is);
 void	ft_free_stack(t_stack **stack);
-void	ft_free_split(char **argv);
+void	ft_free_split(char **argv, bool is_split);
 
 char	**ft_push_swap_split(char *s, char c);
 void	ft_set_cheapest(t_stack *stack);

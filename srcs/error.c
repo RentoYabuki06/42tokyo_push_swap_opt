@@ -6,17 +6,17 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 13:35:57 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 20:42:49 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/10 20:55:30 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_free_error(t_stack **stack, char **argv)
+void	ft_free_error(t_stack **stack, char **argv, bool is)
 {
 	ft_putstr_fd("Error\n", 2);
 	ft_free_stack(stack);
-	ft_free_split(argv);
+	ft_free_split(argv, is);
 	exit(EXIT_FAILURE);
 }
 
@@ -39,11 +39,13 @@ void	ft_free_stack(t_stack **stack)
 	}
 }
 
-void	ft_free_split(char **argv)
+void	ft_free_split(char **argv, bool is_split)
 {
 	int	i;
 
 	i = 0;
+	if (!is_split)
+		return ;
 	if (!argv)
 		return ;
 	while (argv[i])
