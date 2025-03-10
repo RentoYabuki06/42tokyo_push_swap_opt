@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:09:55 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 19:18:50 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/10 20:06:02 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,15 @@ int	main(int argc, char **argv)
 {
 	t_stack	*stack_a;
 	t_stack	*stack_b;
-	int		count;
 
-	count = 0;
 	stack_a = NULL;
 	stack_b = NULL;
 	if (argc == 1 || (argc == 2 && !argv[1][0]))
 		return (EXIT_SUCCESS);
 	else if (argc == 2)
-		argv = ft_push_swap_split(argv[1], ' ', &count);
+		argv = ft_push_swap_split(argv[1], ' ');
 	if (ft_init_stack_a(&stack_a, argv + 1))
-		ft_free_error(&stack_a, argv, count);
+		ft_free_error(&stack_a, argv);
 	if (!ft_is_sorted(stack_a))
 	{
 		if (ft_stack_len(stack_a) == 2)
@@ -37,6 +35,6 @@ int	main(int argc, char **argv)
 			ft_sort_large(&stack_a, &stack_b);
 	}
 	ft_free_stack(&stack_a);
-	ft_free_split(argv, count);
+	ft_free_split(argv);
 	return (EXIT_SUCCESS);
 }
