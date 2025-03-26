@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 21:09:55 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 20:56:42 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/26 14:32:45 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,10 @@ static void	ft_sort(t_stack **stack_a, t_stack **stack_b)
 		ft_sa(stack_a);
 	else if (ft_stack_len(*stack_a) == 3)
 		ft_sort_three(stack_a);
+	else if (ft_stack_len(*stack_a) == 4)
+		ft_sort_four(stack_a, stack_b);
+	else if (ft_stack_len(*stack_a) == 5)
+		ft_sort_five(stack_a, stack_b);
 	else
 		ft_sort_large(stack_a, stack_b);
 }
