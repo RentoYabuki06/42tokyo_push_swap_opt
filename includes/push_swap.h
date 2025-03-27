@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 21:15:40 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/26 14:32:33 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/27 13:12:31 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,4 @@ void	ft_free_split(char **argv, bool is_split);
 
 char	**ft_push_swap_split(char *s, char c);
 void	ft_set_cheapest(t_stack *stack);
-
-void	ft_set_target_a(t_stack *stack_a, t_stack *stack_b);
-
 #endif

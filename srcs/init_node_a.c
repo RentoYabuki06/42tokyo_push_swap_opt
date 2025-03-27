@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 15:18:47 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 18:31:33 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/27 13:13:48 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,32 @@ static int	ft_get_total_cost(int cost_a, int cost_b, bool same_rotation)
 	return (cost_a + cost_b);
 }
 
-static bool	ft_same_rotation(t_stack *stack_a)
+static void	ft_set_target_a(t_stack *stack_a, t_stack *stack_b)
 {
-	if (stack_a->above_median && stack_a->target_node->above_median)
-		return (true);
-	if (!stack_a->above_median && !stack_a->target_node->above_median)
-		return (true);
-	return (false);
+	t_stack	*current_b;
+	t_stack	*target_node;
+	long	best_match_index;
+
+	while (stack_a)
+	{
+		best_match_index = LONG_MIN;
+		current_b = stack_b;
+		while (current_b)
+		{
+			if (current_b->value < stack_a->value \
+				&& current_b->value > best_match_index)
+			{
+				best_match_index = current_b->value;
+				target_node = current_b;
+			}
+			current_b = current_b->next;
+		}
+		if (best_match_index == LONG_MIN)
+			stack_a->target_node = ft_find_min(stack_b);
+		else
+			stack_a->target_node = target_node;
+		stack_a = stack_a->next;
+	}
 }
 
 static void	ft_cost_cal(t_stack *stack_a, t_stack *stack_b)
@@ -55,7 +74,11 @@ static void	ft_cost_cal(t_stack *stack_a, t_stack *stack_b)
 			stack_a->above_median, len_a);
 		cost_b = ft_position_cost(stack_a->target_node->index, \
 			stack_a->target_node->above_median, len_b);
-		same_rotation = ft_same_rotation(stack_a);
+		same_rotation = false;
+		if (stack_a->above_median && stack_a->target_node->above_median)
+			same_rotation = true;
+		if (!stack_a->above_median && !stack_a->target_node->above_median)
+			same_rotation = true;
 		stack_a->push_cost = ft_get_total_cost(cost_a, cost_b, same_rotation);
 		stack_a = stack_a->next;
 	}
