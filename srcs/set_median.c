@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 19:18:05 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/10 18:06:17 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/28 15:48:07 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_set_median(t_stack *stack)
 	while (stack)
 	{
 		stack->index = i;
+		stack->flag_operation = 0;
 		if (i <= median)
 			stack->above_median = true;
 		else

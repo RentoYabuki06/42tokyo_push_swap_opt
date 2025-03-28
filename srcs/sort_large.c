@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/08 14:48:55 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/26 14:43:52 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/28 16:02:46 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,9 @@ static void	ft_move_atob(t_stack **stack_a, t_stack **stack_b)
 	t_stack	*cheapest_node;
 
 	cheapest_node = ft_get_cheapest(*stack_a);
-	if (cheapest_node->above_median && cheapest_node->target_node->above_median)
+	if (cheapest_node->flag_operation == 1)
 		ft_rotate_both(stack_a, stack_b, cheapest_node);
-	else if (!(cheapest_node->above_median) \
-		&& !(cheapest_node->target_node->above_median))
+	else if (cheapest_node->flag_operation == 2)
 		ft_rev_rotate_both(stack_a, stack_b, cheapest_node);
 	ft_prep_for_push(stack_a, cheapest_node, 'a');
 	ft_prep_for_push(stack_b, cheapest_node->target_node, 'b');

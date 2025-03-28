@@ -6,7 +6,7 @@
 /*   By: yabukirento <yabukirento@student.42.fr>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/02 21:15:40 by yabukirento       #+#    #+#             */
-/*   Updated: 2025/03/27 13:12:31 by yabukirento      ###   ########.fr       */
+/*   Updated: 2025/03/28 15:42:05 by yabukirento      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_stack
 	int				value;
 	int				index;
 	int				push_cost;
+	int				flag_operation;
 	bool			above_median;
 	bool			cheapest;
 	struct s_stack	*target_node;
