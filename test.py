@@ -19,7 +19,7 @@ def run_push_swap(numbers):
         operations = result.stdout.strip()
 
         # checkerで結果を検証
-        checker_cmd = f'ARG="{numbers_str}"; ./push_swap $ARG | ./checker_OS $ARG'
+        checker_cmd = f'ARG="{numbers_str}"; ./push_swap $ARG | ./checker $ARG'
         checker = subprocess.run(checker_cmd, shell=True, capture_output=True, text=True)
         is_valid = checker.stdout.strip() == "OK"
 
